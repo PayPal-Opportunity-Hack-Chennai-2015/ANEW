@@ -2,12 +2,12 @@
 
 Team Members
 ============
-Soundarya Thiagarajan 
-Niranj Rajasekaran 
-Nishant Gandhi 
-Saravanan S 
-SankaraNarayanan
-Ravi Kotha 
+1. Soundarya Thiagarajan 
+2. Niranj Rajasekaran 
+3. Nishant Gandhi 
+4. Saravanan S 
+5. SankaraNarayanan
+6. Ravi Kotha 
 
 Problem Statement
 =================
