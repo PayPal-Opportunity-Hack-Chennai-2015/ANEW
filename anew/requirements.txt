@@ -1,0 +1,11 @@
+Django==1.8.7
+MySQL-python==1.2.5
+argparse==1.2.1
+diff-match-patch==20121119
+django-chartjs==1.0
+django-grappelli==2.7.2
+django-import-export==0.3.1
+django-smart-selects==1.1.1
+six==1.10.0
+tablib==0.10.0
+wsgiref==0.1.2

@@ -39,7 +39,9 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'assessment_management',
-    'import_export'
+    'import_export',
+    'chartjs',
+    'smart_selects',
 )
 
 
@@ -111,4 +113,4 @@ STATIC_URL = '/static/'
 
 # Grappelli configuration
 
-GRAPPELLI_ADMIN_TITLE = 'ANEW Configuration'
+GRAPPELLI_ADMIN_TITLE = 'ANEW Administration'

@@ -4,6 +4,7 @@
 {% block title %}ANEW - Dashboard{% endblock %}
 
 {% block content %}
+
     <!-- start: Header -->
 	<div class="navbar">
 		<div class="navbar-inner">
@@ -53,30 +54,34 @@
 					<i class="icon-angle-right"></i>
 				</li>
 				<li><a href="#">Dashboard</a></li>
-			</ul>	
-			
+			</ul>
+                <form class="form-horizontal" action="#" method="post">
+                    {% csrf_token %}
+                    {{ form }}
+                    <button type="submit" class="btn btn-primary">Get Report</button>
+                </form>
+
+                {%  if report_data %}
 			<div class="row-fluid">
+
+                <canvas id="myChart" width="800" height="400"></canvas>
+
+                <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
+                <script type="text/javascript" src="{% static 'js/Chart.min.js' %}"></script>
+                <script type="text/javascript">
+                    $.get('{% url "line_chart_json" %}', function(data) {
+                        var ctx = $("#myChart").get(0).getContext("2d");
+                        new Chart(ctx).Line(data);
+                    });
+                </script>
 				
-				<div class="span3 statbox purple" onTablet="span6" onDesktop="span3">
-					<div class="number">Create Batch</div>
-					<div class="footer dash_links">
-						<a href="#"><img src="{%  static 'img/plus.png' %}"></a>
-					</div>	
-				</div>
-				<div class="span3 statbox green" onTablet="span6" onDesktop="span3">
-					<div class="number">Update Batch</div>
-					<div class="footer">
-						<a href="#"> read full report</a>
-					</div>
-				</div>
-				<div class="span3 statbox blue noMargin" onTablet="span6" onDesktop="span3">
-					<div class="number">View Batch</div>
-					<div class="footer">
-						<a href="#"> read full report</a>
-					</div>
-				</div>
-				
-			</div>	
+			</div>
+                    <div style="width: 10px; height: 10px; background-color: #E5E4E2"></div> January
+                    <div style="width: 10px; height: 10px; background-color: #B7614E"></div> February
+                    <div style="width: 10px; height: 10px; background-color: #C69887"></div> March
+                {%  endif %}
+
+
 						
 			
 			

@@ -3,10 +3,11 @@ from django.contrib.auth.models import User
 from django.core.validators import MinValueValidator, MaxValueValidator
 import datetime
 
+
 # Year choice ranges from 2015 to 2099
 YEAR = [(v, v) for k, v in enumerate([i for i in xrange(2015, 3000)])]
 
-MONTH = [(v, (datetime.date(2015, v, 1).strftime('%B'))) for k, v in enumerate([i for i in xrange(1, 13)])]
+MONTH = [((datetime.date(2015, v, 1).strftime('%B')), (datetime.date(2015, v, 1).strftime('%B'))) for k, v in enumerate([i for i in xrange(1, 13)])]
 
 
 class Student(models.Model):
@@ -133,8 +134,8 @@ class TutorBatch(models.Model):
 
 
 class StudentBatch(models.Model):
-    student = models.ForeignKey(Student)
     batch = models.ForeignKey(Batch)
+    student = models.ForeignKey(Student)
 
     # For logs
     createdon = models.DateTimeField(verbose_name="created Date",
@@ -173,29 +174,29 @@ class Assessment(models.Model):
     year = models.IntegerField(choices=YEAR, default=YEAR[0][0])
     month = models.CharField(choices=MONTH, default=MONTH[0][0],
                              max_length=20)
-    theory_mark = models.DecimalField("Theory Mark", validators=[MaxValueValidator(0),
-                                                                 MinValueValidator(100)],
+    theory_mark = models.DecimalField("Theory Mark", validators=[MaxValueValidator(100),
+                                                                 MinValueValidator(0)],
                                       decimal_places=2, max_digits=12)
-    practical_mark = models.DecimalField("Practical Mark", validators=[MaxValueValidator(0),
-                                                                       MinValueValidator(100)],
+    practical_mark = models.DecimalField("Practical Mark", validators=[MaxValueValidator(100),
+                                                                       MinValueValidator(0)],
                                          decimal_places=2, max_digits=12)
-    presentation_skills = models.DecimalField("Presentaion Skills", validators=[MaxValueValidator(0),
-                                                                                MinValueValidator(100)],
+    presentation_skills = models.DecimalField("Presentaion Skills", validators=[MaxValueValidator(100),
+                                                                                MinValueValidator(0)],
                                               decimal_places=2, max_digits=12)
-    punctuality = models.DecimalField("Punctuality", validators=[MaxValueValidator(0),
-                                                                 MinValueValidator(100)],
+    punctuality = models.DecimalField("Punctuality", validators=[MaxValueValidator(100),
+                                                                 MinValueValidator(0)],
                                       decimal_places=2, max_digits=12)
-    attitude = models.DecimalField("Attitude", validators=[MaxValueValidator(0),
-                                                           MinValueValidator(100)],
+    attitude = models.DecimalField("Attitude", validators=[MaxValueValidator(100),
+                                                           MinValueValidator(0)],
                                    decimal_places=2, max_digits=12)
-    class_participation = models.DecimalField("Class Participation", validators=[MaxValueValidator(0),
-                                                                                MinValueValidator(100)],
+    class_participation = models.DecimalField("Class Participation", validators=[MaxValueValidator(100),
+                                                                                MinValueValidator(0)],
                                               decimal_places=2, max_digits=12)
-    commitment = models.DecimalField("Commitment", validators=[MaxValueValidator(0),
-                                                               MinValueValidator(100)],
+    commitment = models.DecimalField("Commitment", validators=[MaxValueValidator(100),
+                                                               MinValueValidator(0)],
                                      decimal_places=2, max_digits=12)
-    english_fluency = models.DecimalField("English Fluency", validators=[MaxValueValidator(0),
-                                                                         MinValueValidator(100)],
+    english_fluency = models.DecimalField("English Fluency", validators=[MaxValueValidator(100),
+                                                                         MinValueValidator(0)],
                                           decimal_places=2, max_digits=12)
     remarks = models.CharField(
         verbose_name="Remarks",
